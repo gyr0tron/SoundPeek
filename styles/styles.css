@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.bgvid.back {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+
+.body{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	z-index: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.grad{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255, 255, 255, 0)), color-stop(100%,rgb(0, 0, 0))); /* Chrome,Safari4+ */
+	z-index: 1;
+	opacity: 0.7;
+}
+
+.header{
+	position: absolute;
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 50px;
+	font-weight: 200;
+}
+
+.header div span{
+	color: #5379fa !important;
+}
+
+.search{
+	position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+	height: auto;
+	width: 60%;
+	padding: 10px;
+	z-index: 2;
+}
+
+.search input[type=text]{
+	float: left;
+	width: 70%;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+
+.search input[type=submit]{
+	position: absolute;
+    right: 6%;
+    top: 16%;
+	width: 20%;
+	height: 40px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: rgb(0, 0, 0);
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+}
+
+.search input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.search input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.search input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+
+.search input[type=submit]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
