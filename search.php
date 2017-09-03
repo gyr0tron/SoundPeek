@@ -38,7 +38,7 @@
 	}
 
 	$sXML = download_page('https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift');
-
+	
 	$temp = simplexml_load_file('data.xml');
 	print_r ($temp);
 	//$items = simplexml_load_file('https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift');
@@ -46,11 +46,11 @@
 	//echo $sXML;
 	//$ssXML = simplexml_load_string($sXML);
 	//echo $ssXML;
-	$oXML = new SimpleXMLElement($sXML,null,false);
+	//$oXML = new SimpleXMLElement($sXML,null,false);
 	//echo $oXML;
 
-	foreach($oXML->entry as $oEntry){
-	    echo $oEntry->title . "<br/>";
-	}
+	//foreach($oXML->entry as $oEntry){
+	//    echo $oEntry->title . "<br/>";
+	//}
 ?>
 <!--/*https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift*-->
