@@ -2,10 +2,12 @@
 <?php 
 	$var_html=NULL;
 	$option = $_POST['tos'];
-	$query = $_POST['s_query'];
+	$querytemp = $_POST['s_query'];
+	$query = rawurlencode ($querytemp);
 	$url = 'https://musicbrainz.org/Sws/2/';
 	if ($option==1) {
 	 	$var_html="artist";
+	 	$urid = "https://musicbrainz.org/ws/2/$var_html/?query=$var_html:$query";
 	}
 	if ($option==2) {
 	 	$var_html="sngnm";
@@ -16,9 +18,7 @@
 	if ($option==4) {
 	 	$var_html="genre";
 	}
-	echo $var_html, " ", $query, "<br/>";
 
-	$urid = 'https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift';
 		function download_page($path){
 	    $ch = curl_init($path);
 	    $fp = fopen ('./data.xml', 'w+');
@@ -37,8 +37,8 @@
 	    return $retValue;
 	}
 
-	$sXML = download_page('https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift');
-	
+	$sXML = download_page($urid);
+
 	$temp = simplexml_load_file('data.xml');
 	print_r ($temp);
 	//$items = simplexml_load_file('https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift');
