@@ -21,9 +21,17 @@
 		<div>Sound<span>Peek</span></div>
 	</div>
 	<br>
-	<form action="./search.php" method="post">
+	<form action="./search.php" method="post" autocomplete="off">
 		<div class="search">
-			<input type="text" name="s_query" placeholder="Enter Title, Airtst, Album, Anything!" ><br>
+		<div id="drpdwn_content2">
+			<select name="tos" id="drpdwn">
+				<option value="1" selected="selected">Artist</option>
+				<option value="2">Song</option>
+				<option value="3">Album</option>
+				<option value="4">Genre</option>
+			</select>
+		</div>
+			<input id="inputbx" type="text" name="s_query" placeholder="Enter Title, Airtst, Album, Anything!" ><br>
 			<input type="submit" value="Search">
 		</div>
 	</form>
