@@ -37,10 +37,10 @@
 	    return $retValue;
 	}
 
-	$sXML = download_page($urid);
+	download_page($urid);
 
-	$temp = simplexml_load_file('data.xml');
-	print_r ($temp);
+	//$temp = simplexml_load_file('data.xml');
+	//print_r ($temp);
 	//$items = simplexml_load_file('https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift');
 	//echo $items;
 	//echo $sXML;
@@ -54,3 +54,65 @@
 	//}
 ?>
 <!--/*https://musicbrainz.org/ws/2/artist/?query=artist:taylor%20swift*-->
+
+<!--HTML-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search Result</title>
+	<style>
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse:collapse;
+		}
+		th, td {
+		  padding: 5px;
+		}
+	</style>
+</head>
+<body onload="loadXMLDoc()">
+	<table id="demo"></table>
+
+	<script>
+	function loadXMLDoc() {
+	  var xmlhttp = new XMLHttpRequest();
+	  xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      myFunction(this);
+	    }
+	  };
+	  xmlhttp.open("GET", "data.xml", true);
+	  xmlhttp.send();
+	}
+	function myFunction(xml) {
+	  var i;
+	  var xmlDoc = xml.responseXML;
+	  console.log (xmlDoc);
+	  var table="<tr><th>Artist</th><th>%Match</th><th>Country</th><th>type</th><th>Gender</th><th>Died?</th><th>ID</th></tr>";
+	  var x = xmlDoc.getElementsByTagName("artist");
+	  console.log (x);
+	  for (i = 0; i <x.length; i++) { 
+	  	var score_attr = x[i].getAttribute("ext:score");
+	    table += "<tr><td>" +
+	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //name
+	    "</td><td>" +
+	    score_attr + //score
+	    "</td><td>"+
+	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //country err
+	    "</td><td>" +
+	    x[i].type + //type err
+	    "</td><td>" +
+	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //gender err
+	    "</td><td>" +
+	    x[i].getElementsByTagName("ended")[0].childNodes[0].nodeValue + //died?
+	    "</td><td>" +
+	    x[i].id + //id
+	    "</td></tr>";
+	  }
+	  document.getElementById("demo").innerHTML = table;
+	}
+	</script>
+</body>
+</html>
