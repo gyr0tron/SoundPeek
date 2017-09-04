@@ -92,19 +92,30 @@
 	  console.log (xmlDoc);
 	  var table="<tr><th>Artist</th><th>%Match</th><th>Country</th><th>type</th><th>Gender</th><th>Died?</th><th>ID</th></tr>";
 	  var x = xmlDoc.getElementsByTagName("artist");
-	  console.log (x);
+	  //console.log (x);
 	  for (i = 0; i <x.length; i++) { 
 	  	var score_attr = x[i].getAttribute("ext:score");
+	  	var cntry_in = x[i].getElementsByTagName("country");
+	  	function country_chk(cntry) {
+	  		if( cntry === null )
+				{
+					return "-";
+				} else {
+					console.log (cntry);
+					//var value = cntry.length===1 ? cntry[0].nodeValue : "";
+					return cntry;//.firstChild.nodeValue; //[0].childNodes[i].nodeValue
+				}
+	  	}
 	    table += "<tr><td>" +
 	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //name
 	    "</td><td>" +
 	    score_attr + //score
 	    "</td><td>"+
-	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //country err
+	    country_chk(cntry_in) + //country err
 	    "</td><td>" +
-	    x[i].type + //type err
+	    country_chk (x[i].type) + //type err
 	    "</td><td>" +
-	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //gender err
+	    country_chk(x[i].getElementsByTagName("gender")) + //gender err
 	    "</td><td>" +
 	    x[i].getElementsByTagName("ended")[0].childNodes[0].nodeValue + //died?
 	    "</td><td>" +
