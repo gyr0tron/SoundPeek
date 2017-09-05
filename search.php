@@ -109,7 +109,7 @@
 	    table += "<tr><td>" +
 	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //name
 	    "</td><td>" +
-	    score_attr + //score
+	    score_attr + //%score
 	    "</td><td>"+
 	    country_chk(cntry_in) + //country err
 	    "</td><td>" +
