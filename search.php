@@ -95,27 +95,39 @@
 	  //console.log (x);
 	  for (i = 0; i <x.length; i++) { 
 	  	var score_attr = x[i].getAttribute("ext:score");
-	  	var cntry_in = x[i].getElementsByTagName("country");
-	  	function country_chk(cntry) {
-	  		if( cntry === null )
+	  	function var_chk(cntry) {
+	  		if( cntry == null )
 				{
 					return "-";
 				} else {
-					console.log (cntry);
+					if (cntry.length == 1 ) {
+					//console.log (cntry);
 					//var value = cntry.length===1 ? cntry[0].nodeValue : "";
-					return cntry;//.firstChild.nodeValue; //[0].childNodes[i].nodeValue
+					//var demo = cntry[0].childNodes[0].nodeValue;
+					//console.log(demo);
+					return cntry[0].childNodes[0].nodeValue; //[0].childNodes[i].nodeValue
+					} else {
+						return "-";
+					}
 				}
+	  	}
+	  	function type_chk (typchkvar) {
+	  		if (typchkvar == null) {
+	  			return "-";
+	  		} else {
+	  			return typchkvar;
+	  		}
 	  	}
 	    table += "<tr><td>" +
 	    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue + //name
 	    "</td><td>" +
 	    score_attr + //%score
 	    "</td><td>"+
-	    country_chk(cntry_in) + //country err
+	    var_chk(x[i].getElementsByTagName("country")) + //country err
 	    "</td><td>" +
-	    country_chk (x[i].type) + //type err
+	    type_chk(x[i].getAttribute("type")) + //type err
 	    "</td><td>" +
-	    country_chk(x[i].getElementsByTagName("gender")) + //gender err
+	    var_chk(x[i].getElementsByTagName("gender")) + //gender err
 	    "</td><td>" +
 	    x[i].getElementsByTagName("ended")[0].childNodes[0].nodeValue + //died?
 	    "</td><td>" +
