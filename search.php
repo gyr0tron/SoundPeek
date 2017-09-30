@@ -7,7 +7,7 @@
 	$url = 'https://musicbrainz.org/ws/2/';
 	if ($option==1) {
 	 	$var_html="artist";
-	 	$urid = "https://musicbrainz.org/ws/2/$var_html/?query=$var_html:$query";
+	 	$urid = "https://musicbrainz.org/ws/2/$var_html/?query=$var_html:$query&limit=100";
 	}
 	if ($option==2) {
 	 	$var_html="recording";
@@ -64,14 +64,14 @@
 	<meta charset="UTF-8">
 	<title>Search Result</title>
 	<link rel="stylesheet" type="text/css" href="styles/styles_table.css">
-	
 </head>
 <body onload="loadXMLDoc()">
 	<div class="table-title">
-	<h3>Data Table</h3>
+	<h3 id="hdr">Data Table</h3>
 	</div>
 	<table class="table-fill" id="demo"></table>
-	<script src="script.js">
-	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="scripts/script.js"></script>
+	<script src="scripts/click_row.js"></script>
 </body>
 </html>

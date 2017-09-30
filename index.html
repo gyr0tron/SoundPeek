@@ -31,9 +31,25 @@
 				<option value="4">Genre</option>
 			</select>
 		</div>
-			<input id="inputbx" type="text" name="s_query" placeholder="Enter Title, Airtst, Album, Anything!" ><br>
-			<input type="submit" value="Search">
+			<input id="inputbx" autofocus type="text" name="s_query" placeholder="Enter Title, Airtst, Album, Anything!" 
+			required="" 
+			oninvalid="this.setCustomValidity('Invalid Input')"
+			oninput="setCustomValidity('')"><br>
+			<input type="submit" value="Search" id="sub">
 		</div>
 	</form>
+	<!-- <script>
+		function myFunction() {
+			var x, text;
+		
+			x = document.getElementById("sub");
+		
+			if (x.value == "") {
+				alert("Input not valid");
+			} else {
+				alert("Input OK");
+			}
+		}
+	</script> -->
 </body>
 </html>
