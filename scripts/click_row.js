@@ -25,3 +25,24 @@
     //     }
     // });
 //}
+function clickity(num) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        process(this, num);
+      }
+    };
+    xmlhttp.open("GET", "data.xml", true);
+    xmlhttp.send();
+  }
+
+function process(xml, i) {
+    var htm_bod = document.getElementById('demo');
+    htm_bod.innerHTML = '';
+    //https://musicbrainz.org/ws/2/artist/20244d07-534f-4eff-b4d4-930878889970
+
+    var xmlDoc = xml.responseXML;
+    var x_temp = xmlDoc.getElementsByTagName("artist");
+    var x = x_temp[i];
+    console.log (x);
+}

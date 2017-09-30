@@ -70,7 +70,6 @@
 	<h3 id="hdr">Data Table</h3>
 	</div>
 	<table class="table-fill" id="demo"></table>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="scripts/script.js"></script>
 	<script src="scripts/click_row.js"></script>
 </body>
