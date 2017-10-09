@@ -1,0 +1,17 @@
++
+    "<tr><td>" + "Legal Name:" + "<td>" +
+    type_chk(x.getElementsByTagName("alias-list")[0].childNodes[0].childNodes[0].nodeValue) + //name
+    "</td></tr>" +
+    "<tr><td>" + "Gender:" + "<td>" +
+    x.getElementsByTagName("gender")[0].childNodes[0].nodeValue + //name
+    "</td></tr>" +
+    "<tr><td>" + "Country:" + "<td>" +
+    x.getElementsByTagName("area")[0].childNodes[0].childNodes[0].nodeValue + "(" +
+    x.getElementsByTagName("country")[0].childNodes[0].nodeValue + ")" + //name
+    "</td></tr>" +
+    "<tr><td>" + "Area:" + "<td>" +
+    x.getElementsByTagName("begin-area")[0].childNodes[0].childNodes[0].nodeValue + //name
+    "</td></tr>" +
+    "<tr><td>" + "Born:" + "<td>" +
+    x.getElementsByTagName("life-span")[0].childNodes[0].childNodes[0].nodeValue + //name
+    "</td></tr>";

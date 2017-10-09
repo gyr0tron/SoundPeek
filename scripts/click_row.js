@@ -40,9 +40,100 @@ function process(xml, i) {
     var htm_bod = document.getElementById('demo');
     htm_bod.innerHTML = '';
     //https://musicbrainz.org/ws/2/artist/20244d07-534f-4eff-b4d4-930878889970
-
+    // songs: https://musicbrainz.org/ws/2/release?artist=20244d07-534f-4eff-b4d4-930878889970
     var xmlDoc = xml.responseXML;
     var x_temp = xmlDoc.getElementsByTagName("artist");
+    //check var double deep
+    function var_chk(cntry) {
+      if( cntry == null ){
+         return "-";
+      } 
+      else {
+        if (cntry.length == 1 ) {
+          return cntry[0].childNodes[0].childNodes[0].nodeValue;
+        }
+        else {
+         return "-";
+        }
+      }
+    }
+    //check gender single
+    function gen_var_chk(cntry) {
+      if( cntry == null ){
+         return "-";
+      } 
+      else {
+        if (cntry.length == 1 ) {
+          return cntry[0].childNodes[0].nodeValue;
+        }
+        else {
+         return "-";
+        }
+      }
+    }
+    // check area
+    function area_var_chk(cntry) {
+      if( cntry == null ){
+         return "-";
+      } 
+      else {
+        if (cntry.length == 1 ) {
+          return cntry[0].childNodes[0].childNodes[0].nodeValue;
+        }
+        else {
+         return "-";
+        }
+      }
+    }
+    // check born
+    function born_var_chk(cntry) {
+      if( cntry[0].childElementCount == 1 ){
+         return "-";
+      } 
+      else {
+        if (cntry[0].childElementCount == 2 ) {
+          return cntry[0].childNodes[0].childNodes[0].nodeValue;
+        }
+        else {
+         return "-";
+        }
+      }
+    }
+    //tags assembler
+    function tags_assemble(htoj) {     
+      var text ="";
+      var len = htoj[0].childElementCount;
+      for (var iter = 0; iter<=len-1; iter++) { 
+        text = text + htoj[0].childNodes[iter].childNodes[0].innerHTML + ", ";
+      }
+      text = text.substring(0, text.length-2);
+      return text;
+    }
     var x = x_temp[i];
     console.log (x);
+    var y;
+    var table="<tr><th>Query</th><th>Details</th></tr>";
+    table += "<tr><td>" + "Name:" + "<td>" +
+    x.getElementsByTagName("name")[0].childNodes[0].nodeValue + //name
+    "</td></tr>" +
+    "<tr><td>" + "Legal Name:" + "<td>" +
+    var_chk(x.getElementsByTagName("alias-list")) + //name
+    "</td></tr>" +
+    "<tr><td>" + "Gender:" + "<td>" +
+    gen_var_chk(x.getElementsByTagName("gender")) + //name
+    "</td></tr>" +
+    "<tr><td>" + "Country:" + "<td>" +
+    area_var_chk(x.getElementsByTagName("area")) + "(" +
+    gen_var_chk(x.getElementsByTagName("country")) + ")" + //name
+    "</td></tr>" +
+    "<tr><td>" + "Area:" + "<td>" +
+    var_chk(x.getElementsByTagName("begin-area")) + //name
+    "</td></tr>" +
+    "<tr><td>" + "Born:" + "<td>" +
+    born_var_chk(x.getElementsByTagName("life-span")) + //name
+    "</td></tr>" +
+    "<tr><td>" + "Tags:" + "<td>" +
+    tags_assemble(x.getElementsByTagName("tag-list")) + //name
+    "</td></tr>";
+    document.getElementById("demo").innerHTML = table;
 }
