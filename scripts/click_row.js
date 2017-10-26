@@ -110,7 +110,17 @@ function process(xml, i) {
       return text;
     }
     var x = x_temp[i];
+    var artid = x.id;
     console.log (x);
+    var sngurl = "https://musicbrainz.org/ws/2/release?artist=" + artid + "&fmt=json";
+    
+    
+    // function getFBName(sngurl, callback) {
+    //   $.getJSON(sngurl, function (d) {
+    //       callback(d);
+    //   });
+    // }
+
     var y;
     var table="<tr><th>Query</th><th>Details</th></tr>";
     table += "<tr><td>" + "Name:" + "<td>" +
@@ -135,5 +145,16 @@ function process(xml, i) {
     "<tr><td>" + "Tags:" + "<td>" +
     tags_assemble(x.getElementsByTagName("tag-list")) + //name
     "</td></tr>";
+    $.getJSON(sngurl, sngsjsnfunc);
+    function sngsjsnfunc(data)
+    {
+      for (var i = 0; i <data.releases.length; i++) {
+        var sng = data.releases[i].title;
+        console.log (sng);
+        table += "<tr><td>" + "Song Name:" + "<td>" +
+        sng + //name
+        "</td></tr>";
+      }
+    }
     document.getElementById("demo").innerHTML = table;
 }

@@ -71,6 +71,7 @@
 	</div>
 	<table class="table-fill" id="demo"></table>
 	<script src="scripts/script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="scripts/click_row.js"></script>
 </body>
 </html>
