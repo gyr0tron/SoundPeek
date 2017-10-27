@@ -1,8 +1,8 @@
 
 <?php 
 	$var_html=NULL;
-	$option = $_POST['tos'];
-	$querytemp = $_POST['s_query'];
+	$option = $_GET['tos'];
+	$querytemp = $_GET['s_query'];
 	$query = rawurlencode ($querytemp);
 	$url = 'https://musicbrainz.org/ws/2/';
 	if ($option==1) {
@@ -70,6 +70,9 @@
 	<h3 id="hdr">Data Table</h3>
 	</div>
 	<table class="table-fill" id="demo"></table>
+	<div class="table-title" id="sngheader">
+	</div>
+	<div id="demo2"></div>
 	<script src="scripts/script.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="scripts/click_row.js"></script>

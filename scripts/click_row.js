@@ -148,13 +148,25 @@ function process(xml, i) {
     $.getJSON(sngurl, sngsjsnfunc);
     function sngsjsnfunc(data)
     {
+      console.log (data);
+      var tab = document.createElement("TABLE");
+      tab.setAttribute("id", "sngtable");
+      tab.setAttribute("class", "table-fill");
+      document.getElementById("demo2").appendChild(tab);
+
+      var table2="<tr><th>No.</th><th>Song Name</th></tr>";
       for (var i = 0; i <data.releases.length; i++) {
         var sng = data.releases[i].title;
-        console.log (sng);
-        table += "<tr><td>" + "Song Name:" + "<td>" +
-        sng + //name
+        table2 += "<tr><td>" + (i+1) + "<td>" + sng + //name
         "</td></tr>";
       }
+
+      document.getElementById("demo").innerHTML = table;
+      var sngtabletitle = document.createElement("h3");
+      sngtabletitle.setAttribute("id", "hdr");
+      sngtabletitle.innerHTML = "Song List";
+      document.getElementById("sngheader").appendChild(sngtabletitle);
+      document.getElementById("sngtable").innerHTML = table2;
     }
-    document.getElementById("demo").innerHTML = table;
+    
 }
